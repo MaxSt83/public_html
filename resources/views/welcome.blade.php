@@ -85,9 +85,9 @@
                 </div>
 
                <ul>
-				<!--
-				
-				-->
+				@foreach ($tasks as $task)
+					<li>{{ $task->body }}</li>
+				@endforeach
             </div>
         </div>
     </body>
