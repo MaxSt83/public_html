@@ -14,7 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $header='Header X';
+        $header='Header X 2';
 		$message='This is a template';
 		
 		$articles= Article::select(['id', 'title', 'text'])->get();
