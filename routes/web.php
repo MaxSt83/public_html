@@ -10,9 +10,26 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+/*Route::get('/', function () {
 	$tasks = DB::table('tasks')->get();
-    return view('welcome', compact('tasks'));
+    return view('tasks.index', compact('tasks'));
 });
+*/
 
+Route::get('/', 'IndexController@index');
+
+
+
+
+
+//Route::view('/tasks', 'tasks.index');
+
+//Route::get('/helloworld', function() {
+//echo '123321';
+//});
+/*
+Route::get('/tasks/{task}', function ($id) {
+	$task = DB::table('tasks')->find($id);
+	return view('tasks.show', compact('task'));
+});
+*/
