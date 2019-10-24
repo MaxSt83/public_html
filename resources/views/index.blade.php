@@ -17,7 +17,7 @@
 						<br>
 						{!! $article->text !!}
 						<br>
-						Подробнее
+						<a class="btn btn-default" href="{{ route('articleShow',['id'=>$article->id]) }}">Подробнее</a>
 					</li>
 				@endforeach
 				</ul>

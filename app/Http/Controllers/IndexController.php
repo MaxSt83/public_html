@@ -12,20 +12,35 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+	protected $message;
+	protected $header;	
+	
+	public function __construct()
+	{
+		$this->header = 'Hello world';
+		$this->message = 'This is template';
+		
+	}
     public function index()
     {
-        $header='Header X 4';
-		$message='This is a template';
-		
-		$articles= Article::select(['id', 'title', 'text'])->get();
+        $articles= Article::select(['id', 'title', 'text'])->get();
 		//dump($articles);
 		
-		return view('index')->with(['message'=>$message, 
-									'header' =>$header,
+		return view('index')->with(['message'=>$this->message, 
+									'header' =>$this->header,
 									'articles' => $articles
 									]);
     }
 
+	public function show($id)
+    {
+		$article = Article::select(['id', 'title','text'])->where('id', $id)->first();
+		
+		return view('article-content')->with(['message'=>$this->message, 
+									'header' =>$this->header,
+									'article' => $article
+									]);
+	}
     /**
      * Show the form for creating a new resource.
      *
@@ -53,10 +68,7 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
